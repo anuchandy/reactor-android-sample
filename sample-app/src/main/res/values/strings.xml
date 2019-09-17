@@ -1,0 +1,11 @@
+<resources>
+  <string name="app_name">Reactor Demo</string>
+
+  <string name="title_activity_settings">Settings</string>
+
+  <!-- Preference Titles -->
+  <string name="github_config_header">Reactor Github Demo Settings</string>
+
+  <!-- Az Config Preferences -->
+  <string name="github_token">GitHub Token</string>
+</resources>

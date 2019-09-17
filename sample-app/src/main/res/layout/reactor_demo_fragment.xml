@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="reactor.android.sample.reactordemoactivity.ReactorDemoFragment">
+
+    <ScrollView android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#000">
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000"
+        android:orientation="vertical"
+        android:stretchColumns="1">
+
+        <TableRow android:layout_width="179dp"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="212dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:background="#000"
+                android:padding="5dp"
+                android:text="GitHub Organization"
+                android:textColor="#fff" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:background="#000"
+                android:padding="5dp"
+                android:text="Repo"
+                android:textColor="#fff" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="179dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/orgName1EditView"
+                android:layout_width="212dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:background="#fff"
+                android:padding="5dp"
+                android:text="reactor"
+                android:textColor="#000"
+                tools:text="Organization Name" />
+
+            <EditText
+                android:id="@+id/repoName1EditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:background="#fff"
+                android:padding="5dp"
+                android:text="reactor-core"
+                android:textColor="#000"
+                tools:text="Repo Name" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="179dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/orgName2EditView"
+                android:layout_width="212dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:background="#fff"
+                android:padding="5dp"
+                android:textColor="#000"
+                tools:text="Organization Name" />
+
+            <EditText
+                android:id="@+id/repoName2EditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:background="#fff"
+                android:padding="5dp"
+                android:textColor="#000"
+                tools:text="Repo Name" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="179dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/orgName3EditView"
+                android:layout_width="212dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:background="#fff"
+                android:padding="5dp"
+                android:textColor="#000"
+                tools:text="Organization Name" />
+
+            <EditText
+                android:id="@+id/repoName3EditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:background="#fff"
+                android:padding="5dp"
+                android:textColor="#000"
+                tools:text="Repo Name" />
+        </TableRow>
+
+        <TableRow android:layout_width="179dp"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/fetchContributorsBtn"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_span="2"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Get top #5 Contributors" />
+        </TableRow>
+
+        <TableRow android:layout_width="179dp"
+            android:layout_marginTop="0dp">
+
+            <TextView
+                android:id="@+id/contributors1HdrTextView"
+                android:layout_width="212dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_span="2"
+                android:background="#000"
+                android:padding="5dp"
+                android:textColor="#fff"
+                android:visibility="gone"
+                tools:visibility="gone" />
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="179dp"
+            android:layout_height="wrap_content" android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/contributors1TextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:padding="5dp"
+                android:layout_span="2"
+                android:background="@android:color/holo_green_light"
+                android:text="Repo1 contributors" />
+
+        </TableRow>
+
+        <TableRow android:layout_width="179dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/contributors2HdrTextView"
+                android:layout_width="212dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_span="2"
+                android:background="#000"
+                android:padding="5dp"
+                android:textColor="#fff"
+                android:visibility="gone"
+                tools:visibility="gone" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="179dp"
+            android:layout_height="wrap_content" android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/contributors2TextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:padding="5dp"
+                android:layout_span="2"
+                android:background="@android:color/holo_green_light"
+                android:text="Repo2 contributors" />
+
+        </TableRow>
+
+        <TableRow android:layout_width="179dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/contributors3HdrTextView"
+                android:layout_width="212dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_span="2"
+                android:background="#000"
+                android:padding="5dp"
+                android:textColor="#fff"
+                android:visibility="gone"
+                tools:visibility="gone" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="179dp"
+            android:layout_height="wrap_content" android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/contributors3TextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:padding="5dp"
+                android:layout_span="2"
+                android:background="@android:color/holo_green_light"
+                android:text="Repo3 contributors" />
+
+        </TableRow>
+    </TableLayout>
+
+    </ScrollView>
+</FrameLayout>
