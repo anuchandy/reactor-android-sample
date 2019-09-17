@@ -110,3 +110,7 @@ Disposable disposable = contributorsMono
 ```
 
 The operator `publishOn` is used here to set Reactor Android scheduler as the scheduler to run call backs.
+
+## sample-app/libs
+
+The sample application `libs` directory contains reactor-okhttp (`/sample-app/libs/reactor-okhttp-1.0-SNAPSHOT.jar`) and reactor-android (`/sample-app/libs/reactor-android-release.aar`) binaries. 
