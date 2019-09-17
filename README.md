@@ -8,7 +8,7 @@ A sample Android application that make use of following modules:
 
 Application min SDK version is 26.
 
-Sample demonstrates using Reactor to make asynchronous HTTP call (GitHub v3 REST endpoint in this case) and display the result in UI.
+Sample demonstrates using Reactor to make asynchronous HTTP call and display the result in UI.
  
 GitHub expose an API to retrieve contributors of any public repo anonymously. The sample uses this API to retrieve top 5 contributors of atmost 3 repos.
 
@@ -56,27 +56,41 @@ An Http call can be made using `HttpClient`'s `send` method.
 
 final String githubOrganization = "reactor";
 final String githubRepo = "reactor-core";
-final String contributorsEndpoint = "https://api.github.com/repos/" + githubOrganization + "/" + githubRepo + "/contributors";
+final String contributorsEndpoint = "https://api.github.com/repos/" 
+    + githubOrganization + "/" 
+    + githubRepo 
+    + "/contributors";
+    
 HttpRequest request = new HttpRequest(HttpMethod.GET, toUrl(contributorsEndpoint)));
 Mono<List<GitHub.Contributor>> contributorsMono = httpClient.send(request)
     .flatMap((Function<HttpResponse, Mono<String>>) httpResponse -> {
         if (httpResponse.getStatusCode() >= 400) {
             return httpResponse.getBodyAsString()
-                .flatMap(errorContent -> Mono.<String>error(toThrowable(httpResponse.getStatusCode(), errorContent)))
-                .switchIfEmpty(Mono.defer(() -> Mono.error(toThrowable(httpResponse.getStatusCode(), null)))));
+                .flatMap(errorContent -> errorMono(httpResponse.getStatusCode(), errorContent))
+                .switchIfEmpty(Mono.defer(() -> errorMono(httpResponse.getStatusCode(), null)));
         } else {
             return httpResponse.getBodyAsString();
         }
     })
-    .map(content -> (new Gson()).fromJson(content, new TypeToken<ArrayList<Contributor>>(){}.getType()));
+    .map(content -> deserializeContributors(content));
+
+private static Mono<String> toErrorMono(int statusCode, String errorContent) {
+    return Mono.<String>error(toThrowable(httpResponse.getStatusCode(), errorContent);
+}
 
 private static Throwable toThrowable(int statusCode, String errorContent) {
     if (errorContent != null) {
         return new Throwable("StatusCode:" + httpResponse.getStatusCode() + " Content: " + errorContent);
     } else {
-      return new Throwable("StatusCode:" + httpResponse.getStatusCode());
+        return new Throwable("StatusCode:" + httpResponse.getStatusCode());
     }
 }
+
+private static List<GitHub.Contributor> deserializeContributors(String content) {
+    return (new Gson())
+        .fromJson(content, new TypeToken<ArrayList<Contributor>>(){}.getType())
+}
+
 ```
 
 A subscription to `contributorsMono` initate the call to GitHub list contributors endpoint.
@@ -101,7 +115,11 @@ Disposable disposable = contributorsMono
     .subscribeOn(Schedulers.elastic())
     .publishOn(AndroidSchedulers.mainThread())
     .doOnNext(contributors -> {
-        String contributorsStr = String.join("\n", contributors.stream().map(c -> c.getLogin()).collect(Collectors.toList()));
+        String contributorsStr = String.join("\n", 
+            contributors.stream()
+                .map(c -> c.getLogin())
+                .collect(Collectors.toList()));
+                
         TextView resultTextView = view.findViewById(resultTextViewId);
         resultTextView.setText(contributorsStr);
     })
