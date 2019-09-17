@@ -12,6 +12,8 @@ Sample demonstrates using Reactor to make asynchronous HTTP call (GitHub v3 REST
  
 GitHub expose an API to retrieve contributors of any public repo anonymously. The sample uses this API to retrieve top 5 contributors of atmost 3 repos.
 
+![alt text](https://github.com/anuchandy/reactor-android-sample/blob/master/img/Reactor-Android-Sample.png)
+
 ## Using reactor-okhttp
 
 [reactor-okhttp](https://github.com/anuchandy/reactor-okhttp) includes a Reactor based light weight `HttpClient` that uses [Square OkHttp](https://github.com/square/okhttp) underneath.
