@@ -66,8 +66,8 @@ Mono<List<GitHub.Contributor>> contributorsMono = httpClient.send(request)
     .flatMap((Function<HttpResponse, Mono<String>>) httpResponse -> {
         if (httpResponse.getStatusCode() >= 400) {
             return httpResponse.getBodyAsString()
-                .flatMap(errorContent -> errorMono(httpResponse.getStatusCode(), errorContent))
-                .switchIfEmpty(Mono.defer(() -> errorMono(httpResponse.getStatusCode(), null)));
+                .flatMap(content -> toErrorMono(httpResponse.getStatusCode(), content))
+                .switchIfEmpty(Mono.defer(() -> toErrorMono(httpResponse.getStatusCode(), null)));
         } else {
             return httpResponse.getBodyAsString();
         }
